@@ -8,6 +8,28 @@
 
     <div class="container">
         <h2>게시판</h2>
+        <div>총 건수 : <span th:text="${#lists.size(list)}"></span></div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">제목</th>
+                <th scope="col">작성자</th>
+                <th scope="col">작성일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="vo : ${list}">
+                <th th:text="${vo.id}">1</th>
+                <td th:text="${vo.title}">Mark</td>
+                <td>Otto</td>
+                <td th:text="${#dates.format(vo.reg_dt, 'yyyy.MM.dd')}">@mdo</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-right">
+            <button type="button" class="btn btn-dark">작성</button>
+        </div>
     </div>
 
 
