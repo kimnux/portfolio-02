@@ -21,8 +21,5 @@ public class Board {
 
     private String content;
     private Date reg_dt;
-
-    @NotNull
-    @Size(min=2, max=10)
     private String writer;
 }

@@ -21,7 +21,7 @@
             <tbody>
                 <tr th:each="vo : ${list}">
                     <th th:text="${vo.id}">1</th>
-                    <td><a th:text="${vo.title}" href="#" th:href="@{/board/form(id=${vo.id})}">Mark</a></td>
+                    <td><a th:text="${vo.title}" href="#" th:href="@{/board/detail(id=${vo.id})}">Mark</a></td>
                     <td th:text="${vo.writer}">Otto</td>
                     <td th:text="${#dates.format(vo.reg_dt, 'yyyy.MM.dd')}">@mdo</td>
                 </tr>

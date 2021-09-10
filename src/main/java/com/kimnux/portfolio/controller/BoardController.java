@@ -33,14 +33,8 @@ public class BoardController {
     }
 
     @GetMapping("/form")
-    public String form(Model model, @RequestParam(required = false) Long id) {
-        System.out.println("id===> "+ id);
-        if(id == null) {
-            model.addAttribute("board", new Board());
-        } else {
-            Board board = boardRepository.findById(id).orElse(null); // orElse(null)은 없으면 null을 반환하겠다는 의미
-            model.addAttribute("board", board);
-        }
+    public String form(Model model) {
+        model.addAttribute("board", new Board());
         return "board/form";
     }
 
@@ -53,10 +47,18 @@ public class BoardController {
             return "board/form";
         }
 
-        board.setWriter("kimdw");
         boardRepository.save(board);
         System.out.println("board ====> " + board);
         return "redirect:/board/list";
+    }
+
+    @GetMapping("/detail")
+    public String detail(Model model, @RequestParam(required = false) Long id) {
+        System.out.println("id===> "+ id);
+        Board board = boardRepository.findById(id).orElse(null); // orElse(null)은 없으면 null을 반환하겠다는 의미
+        model.addAttribute("board", board);
+
+        return "board/detail";
     }
 
 
